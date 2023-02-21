@@ -10,14 +10,19 @@ class UsersController < ApplicationController
 
     if @user.save
       login(@user)
-      redirect_to users_url
+      redirect_to user_url(@user)
     else
-      render :new
+      render :show
     end
   end
 
   def new
     render :new
+  end
+
+  def show
+    @user = User.find(params[:id])
+    render :show
   end
 
 
